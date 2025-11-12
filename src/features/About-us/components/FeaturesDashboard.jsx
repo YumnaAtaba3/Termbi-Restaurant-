@@ -1,12 +1,12 @@
 import React from "react";
-import dashboardImg from "../assets/dashboard.png";
-import logoText from "../assets/about/logoblack.svg"
+import dashboardImg from "../../../assets/dashboard.png";
+import logoText from "../../../assets/about/logoblack.svg"
 
 export default function FeaturesDashboard() {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-6xl mx-auto text-center px-6">
-       <h2 className="text-3xl  mb-6 flex flex-wrap items-center justify-center mb-16">
+       <h2 className="text-3xl   flex flex-wrap items-center justify-center mb-16">
         <img
           src={logoText}
           alt="logo"

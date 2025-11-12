@@ -1,10 +1,10 @@
 import React from "react";
-import logoText from "../assets/about/logoblack.svg"
-import taverna from "../assets/about/Taverna.svg"
-import meltyway from "../assets/about/melty-way.svg"
-import goodtaste from "../assets/about/good-test.svg"
-import sparro from "../assets/about/sparro.svg"
-import aldenaite from "../assets/about/aldenaite.svg"
+import logoText from "../../../assets/about/logoblack.svg"
+import taverna from "../../../assets/about/Taverna.svg"
+import meltyway from "../../../assets/about/melty-way.svg"
+import goodtaste from "../../../assets/about/good-test.svg"
+import sparro from "../../../assets/about/sparro.svg"
+import aldenaite from "../../../assets/about/aldenaite.svg"
 
 export default function TrustedRestaurants() {
   const logos = [

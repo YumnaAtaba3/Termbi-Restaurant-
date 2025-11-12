@@ -1,6 +1,6 @@
 import React from "react";
-import background from "../assets/about/about.svg"; 
-import logoText from "../assets/about/logoblack.svg"
+import background from "../../../assets/about/about.svg"; 
+import logoText from "../../../assets/about/logoblack.svg"
 
 export default function WhyTermbi() {
   return (

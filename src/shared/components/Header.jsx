@@ -22,7 +22,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center ml-auto text-[15px] font-medium text-white">
           {/* Nav Links */}
-          <div className="flex space-x-6">
+          <div className="flex space-x-8">
             <a href="#" className="hover:text-red-500 transition">Home</a>
             <a href="#" className="hover:text-red-500 transition">Services</a>
             <a href="#" className="hover:text-red-500 transition">About us</a>
@@ -63,7 +63,7 @@ export default function Header() {
           </div>
 
           {/* Login Button */}
-          <button className="ml-6 bg-[#272727] border border-white text-white text-sm px-6 py-2.5 rounded hover:bg-gray-700 transition">
+          <button className="ml-6 bg-[#272727] border border-white text-white text-sm px-8 py-2.5 rounded hover:bg-gray-700 transition">
             Log in
           </button>
         </div>
