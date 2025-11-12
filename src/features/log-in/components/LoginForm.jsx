@@ -6,7 +6,7 @@ const LoginForm = () => {
 
   return (
     <div
-      className="w-full md:w-1/2 flex flex-col justify-center px-6 mt-9 sm:px-10 md:px-16 py-10 md:py-0"
+      className="w-full md:w-1/2 flex flex-col justify-center px-6  sm:px-10 md:px-16 py-10 md:py-0"
       style={{ backgroundColor: "#FFF8F8" }}
     >
       <div className="max-w-md w-full mx-auto">
@@ -35,7 +35,7 @@ const LoginForm = () => {
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-red-500"
+                 className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
                 placeholder="Enter your password"
               />
               <button
