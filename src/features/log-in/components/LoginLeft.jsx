@@ -11,8 +11,8 @@ const LoginLeft = () => {
         Restaurants Management System
       </h3>
 
-      {/* Illustration */}
-      <img src={avatar} alt="Illustration" className="w-3/4 max-w-xs md:max-w-md" />
+      {/* avatar*/}
+      <img src={avatar} alt="avatar" className="w-3/4 max-w-xs md:max-w-md" />
     </div>
   );
 };

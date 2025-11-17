@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import logo from "../../assets/header/logo.svg";
+import { Link } from "react-router-dom";
+import { appRoutes } from "../../routes";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -11,26 +13,42 @@ export default function Header() {
     { name: "Syria", flag: "https://flagcdn.com/sy.svg" },
   ];
 
+  const langRef = useRef(null);
+  const menuRef = useRef(null);
+
+  // Close language dropdown and mobile menu if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (langRef.current && !langRef.current.contains(event.target)) {
+        setLangOpen(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <header className=" fixed top-0 left-0 w-full z-50 bg-[#272727]  shadow-sm">
+    <header className="fixed top-0 left-0 w-full z-50 bg-[#272727] shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
         {/* Logo */}
-        <div className="text-2xl font-bold">
+        <Link to={appRoutes.home} className="text-2xl font-bold">
           <img src={logo} alt="logo" className="w-24 h-10" />
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center ml-auto text-[15px] font-medium text-white">
-          {/* Nav Links */}
           <div className="flex space-x-8">
-            <a href="#" className="hover:text-red-500 transition">Home</a>
-            <a href="#" className="hover:text-red-500 transition">Services</a>
-            <a href="#" className="hover:text-red-500 transition">About us</a>
-            <a href="#" className="hover:text-red-500 transition">Contact us</a>
+            <Link to="/" className="hover:text-red-500 transition">Home</Link>
+            <Link to="/services" className="hover:text-red-500 transition">Services</Link>
+            <Link to="/about" className="hover:text-red-500 transition">About us</Link>
+            <Link to="/contact" className="hover:text-red-500 transition">Contact us</Link>
           </div>
 
           {/* Language Dropdown */}
-          <div className="relative ml-8">
+          <div className="relative ml-8" ref={langRef}>
             <button
               onClick={() => setLangOpen(!langOpen)}
               className="flex items-center space-x-1 hover:text-red-500 focus:outline-none"
@@ -63,16 +81,16 @@ export default function Header() {
           </div>
 
           {/* Login Button */}
-          <button className="ml-6 bg-[#272727] border border-white text-white text-sm px-8 py-2.5 rounded hover:bg-gray-700 transition">
+          <Link
+            to={appRoutes.auth.login}
+            className="ml-6 bg-[#272727] border border-white text-white text-sm px-8 py-2.5 rounded hover:bg-gray-700 transition flex items-center justify-center"
+          >
             Log in
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden focus:outline-none"
-          onClick={() => setOpen(!open)}
-        >
+        <button className="md:hidden focus:outline-none" onClick={() => setOpen(!open)}>
           <div className="space-y-1.5">
             <span className="block w-6 h-0.5 bg-white"></span>
             <span className="block w-6 h-0.5 bg-white"></span>
@@ -83,18 +101,18 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-[#272727] border-t border-gray-700 px-6 pb-4">
+        <div ref={menuRef} className="md:hidden bg-[#272727] border-t border-gray-700 px-6 pb-4">
           <nav className="flex flex-col space-y-3 mt-3 text-white text-[15px]">
-            <a href="#" className="hover:text-red-500 transition">Home</a>
-            <a href="#" className="hover:text-red-500 transition">Services</a>
-            <a href="#" className="hover:text-red-500 transition">About us</a>
-            <a href="#" className="hover:text-red-500 transition">Contact us</a>
+            <Link to="/" className="hover:text-red-500 transition">Home</Link>
+            <Link to="/services" className="hover:text-red-500 transition">Services</Link>
+            <Link to="/about" className="hover:text-red-500 transition">About us</Link>
+            <Link to="/contact" className="hover:text-red-500 transition">Contact us</Link>
           </nav>
 
           {/* Language + Login */}
           <div className="flex flex-col mt-4 space-y-4">
             {/* Language Dropdown */}
-            <div className="relative">
+            <div className="relative" ref={langRef}>
               <button
                 onClick={() => setLangOpen(!langOpen)}
                 className="flex items-center space-x-1 hover:text-red-500 focus:outline-none"
@@ -127,9 +145,12 @@ export default function Header() {
             </div>
 
             {/* Login Button */}
-            <button className="w-full bg-[#272727] border border-white text-white text-sm py-2.5 rounded hover:bg-gray-700 transition">
+            <Link
+              to={appRoutes.auth.login}
+              className="w-full bg-[#272727] border border-white text-white text-sm py-2.5 rounded hover:bg-gray-700 transition text-center"
+            >
               Log in
-            </button>
+            </Link>
           </div>
         </div>
       )}

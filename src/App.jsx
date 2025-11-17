@@ -1,14 +1,9 @@
 import './App.css'
 import './index.css'
-import ContainerLayout from './shared/layouts/layout-container'
+import { AppRouterProvider } from "./routes/provider"
 
 function App() {
- 
-  return (
-    <>
-    <ContainerLayout/>
-    </>
-  )
+  return <AppRouterProvider />;
 }
 
-export default App
+export default App;

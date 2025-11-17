@@ -52,7 +52,7 @@ export default function PricingPackages() {
             className="relative group rounded-3xl shadow-md overflow-hidden transition-all duration-500 bg-white flex flex-col"
             style={{ minHeight: "28rem", minWidth: "10rem" }}
           >
-            {/* Background Circle — pink by default, red on hover */}
+            {/* Background Circle \*/}
             <div
               className="absolute -top-20 -left-10 w-80 h-60 bg-[#FFEDED] rounded-full opacity-100 scale-125 transition-all duration-500 ease-out group-hover:bg-[#F44D4D]"
             />

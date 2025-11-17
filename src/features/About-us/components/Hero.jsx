@@ -12,9 +12,8 @@ export default function Hero() {
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Container for content */}
+      {/*content */}
       <div className="container mx-auto relative z-10 text-white px-6">
-        {/* Use flex to align content to left */}
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             Get your own <br /> restaurant website
