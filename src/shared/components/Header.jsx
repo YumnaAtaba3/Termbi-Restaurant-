@@ -42,7 +42,7 @@ export default function Header() {
         <div className="hidden md:flex items-center ml-auto text-[15px] font-medium text-white">
           <div className="flex space-x-8">
             <Link to="/" className="hover:text-red-500 transition">Home</Link>
-            <Link to="/services" className="hover:text-red-500 transition">Services</Link>
+            <Link to="/cart" className="hover:text-red-500 transition">Services</Link>
             <Link to="/about" className="hover:text-red-500 transition">About us</Link>
             <Link to="/contact" className="hover:text-red-500 transition">Contact us</Link>
           </div>

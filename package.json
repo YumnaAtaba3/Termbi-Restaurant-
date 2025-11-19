@@ -15,6 +15,8 @@
     "@headlessui/react": "^2.2.9",
     "@mui/icons-material": "^7.3.5",
     "@mui/material": "^7.3.5",
+    "@mui/x-date-pickers": "^8.18.0",
+    "dayjs": "^1.11.19",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-phone-input-2": "^2.15.1",

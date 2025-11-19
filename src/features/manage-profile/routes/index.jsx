@@ -1,9 +1,21 @@
 import { lazy } from "react";
-const ManageProfilePage = lazy(() => import("../pages/index"));
+import { appRoutes } from "../../../routes/index";
+
+const ManageProfileLayout = lazy(() => import("../pages/ManageProfileLayout"));
+const ProfileMain = lazy(() => import("../pages/ProfileMain"));
+const Orders = lazy(() => import("../pages/Orders"));
+const Bookings = lazy(() => import("../pages/Bookings"));
+const Reviews = lazy(() => import("../pages/Reviews"));
+
 export const ManageProfileRoutes = [
   {
-    path: "/manage-profile", 
-    element: <ManageProfilePage />,
-  },
-  
+    path: appRoutes.manageProfile,
+    element: <ManageProfileLayout />,
+    children: [
+      { index: true, element: <ProfileMain /> },
+      { path: "orders", element: <Orders /> },
+      { path: "bookings", element: <Bookings /> },
+      { path: "reviews", element: <Reviews /> },
+    ]
+  }
 ];

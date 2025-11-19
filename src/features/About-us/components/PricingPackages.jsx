@@ -54,7 +54,7 @@ export default function PricingPackages() {
           >
             {/* Background Circle \*/}
             <div
-              className="absolute -top-20 -left-10 w-80 h-60 bg-[#FFEDED] rounded-full opacity-100 scale-125 transition-all duration-500 ease-out group-hover:bg-[#F44D4D]"
+              className="absolute -top-20 -left-5 w-80 h-60 bg-[#FFEDED] rounded-full opacity-100 scale-125 transition-all duration-500 ease-out group-hover:bg-[#F44D4D]"
             />
 
             {/* Content */}

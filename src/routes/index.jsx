@@ -7,9 +7,9 @@ export const appRoutes = {
   checkout:"/checkout",
   cart:"/cart",
   manageProfile: "/manage-profile",
-  myOrder: "/my-order",
-  MyBooking: "/my-booking",
-  myReviews: "/my-reviews",
+  myOrder: "/manage-profile/orders",
+  MyBooking: "/manage-profile/bookings",
+  myReviews: "/manage-profile/reviews",
 
   reserveDetails: "/reserve-details",
   auth: {

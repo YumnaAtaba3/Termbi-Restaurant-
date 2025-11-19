@@ -1,83 +1,147 @@
 import React, { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
+import BookingOptions from "../components/BookingOptions";
+import BookingDate from "../components/BookingDate"; 
+import BookingTime from "../components/BookingTime"; 
+import GuestsInput from "../components/GuestsInput"; 
+import NotesInput from "../components/NotesInput";
+import ReserveButton from "../components/ReserveButton";
+
+import onetable from "../../../assets/reserve/a table.svg"; 
+import tables from "../../../assets/reserve/tables.svg"; 
+import allResturant from "../../../assets/reserve/all.svg";
+import event from "../../../assets/reserve/Event.svg";
 
 export default function ReserveDetails() {
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
+  const [selectedOption, setSelectedOption] = useState("one table");
+  const [date, setDate] = useState(null);
+  const [time, setTime] = useState(null);
   const [guests, setGuests] = useState("");
   const [notes, setNotes] = useState("");
+  const [tableCount, setTableCount] = useState(1);
+  const [eventType, setEventType] = useState("");
+  const [decoration, setDecoration] = useState("");
+
+  const options = [
+    { icon: onetable, label: "one table" },
+    { icon: tables, label: "multiple tables" },
+    { icon: allResturant, label: "restaurant" },
+    { icon: event, label: "event" },
+  ];
+
+  const eventTypes = ["Wedding", "Birthday", "Graduation", "Party"];
+  const decorations = ["Wedding décor", "Birthday décor", "Graduation décor", "Galaxy décor", "Old Europe décor"];
 
   return (
-    <div className="w-full max-w-5xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6 text-red-600">Reserve Details</h2>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <div className="w-full max-w-5xl mx-auto p-6 mt-12">
+        <h2 className="text-2xl font-bold mb-4 text-red-600">
+          Reserve <span className="text-black">Details</span>
+        </h2>
 
-      {/* Booking Options */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
-        <div className="p-4 border rounded-2xl shadow hover:shadow-lg transition cursor-pointer text-center">
-          <img src="/images/reserve-table.png" alt="Reserve a table" className="mx-auto mb-2" />
-          <p className="font-semibold">Reserve a table</p>
-        </div>
-        <div className="p-4 border rounded-2xl shadow hover:shadow-lg transition cursor-pointer text-center">
-          <img src="/images/multiple-tables.png" alt="Reserve multiple tables" className="mx-auto mb-2" />
-          <p className="font-semibold">Reserve multiple tables</p>
-        </div>
-        <div className="p-4 border rounded-2xl shadow hover:shadow-lg transition cursor-pointer text-center">
-          <img src="/images/reserve-restaurant.png" alt="Reserve restaurant" className="mx-auto mb-2" />
-          <p className="font-semibold">Reserve all restaurant</p>
-        </div>
-        <div className="p-4 border rounded-2xl shadow hover:shadow-lg transition cursor-pointer text-center">
-          <img src="/images/reserve-event.png" alt="Reserve event" className="mx-auto mb-2" />
-          <p className="font-semibold">Reserve for Event</p>
-        </div>
-      </div>
+        <BookingOptions
+          options={options}
+          onSelect={(opt) => setSelectedOption(opt.label)}
+        />
 
-      {/* Form Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-        <div>
-          <label className="block font-semibold mb-1">Booking Date</label>
-          <input
-            type="date"
-            className="w-full border rounded-xl p-3 shadow"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
 
-        <div>
-          <label className="block font-semibold mb-1">Booking Time</label>
-          <input
-            type="time"
-            className="w-full border rounded-xl p-3 shadow"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          />
-        </div>
+          {/* LEFT COLUMN */}
+          <div className="flex flex-col gap-8">
 
-        <div>
-          <label className="block font-semibold mb-1">Guests</label>
-          <input
-            type="number"
-            placeholder="Enter number"
-            className="w-full border rounded-xl p-3 shadow"
-            value={guests}
-            onChange={(e) => setGuests(e.target.value)}
-          />
-        </div>
+            {/* Date Picker */}
+            <BookingDate date={date} setDate={setDate} />
 
-        <div>
-          <label className="block font-semibold mb-1">Notes</label>
-          <textarea
-            placeholder="Enter notes, important details or special request"
-            className="w-full border rounded-xl p-3 shadow h-24"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-          />
-        </div>
-      </div>
+            {/* Time Picker */}
+            <BookingTime time={time} setTime={setTime} selectedOption={selectedOption} />
 
-      {/* Submit Button */}
-      <button className="bg-gray-300 text-black px-8 py-3 rounded-xl shadow hover:bg-gray-400 transition w-full md:w-auto">
-        Reserve Now
-      </button>
+            {/* Multiple tables */}
+            {selectedOption === "multiple tables" && (
+              <div className="flex items-center gap-6  w-full md:w-2/3">
+                <label className="w-60 font-semibold">Tables number</label>
+                <select
+                  value={tableCount}
+                  onChange={(e) => setTableCount(e.target.value)}
+                  className="w-full border rounded-xl p-3 shadow bg-white appearance-none"
+                >
+                  {[...Array(10)].map((_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1} table{i + 1 > 1 ? "s" : ""}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+
+
+           
+
+            
+            {/* Event dropdowns */}
+            {selectedOption === "event" && (
+              <>
+                {/* Type of Event */}
+                <div className="flex items-center gap-4 w-full md:w-2/3">
+                  <label className="w-60 font-semibold">Type of Event</label>
+                  <select
+                    value={eventType}
+                    onChange={(e) => setEventType(e.target.value)}
+                    className="w-full border rounded-xl p-3 shadow bg-white appearance-none"
+                  >
+                    <option value="">Select Event</option>
+                    {eventTypes.map((type) => (
+                      <option key={type} value={type}>{type}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Decoration */}
+                <div className="flex items-center gap-4  w-full md:w-2/3">
+                  <label className="w-60 font-semibold">Decoration</label>
+                  <select
+                    value={decoration}
+                    onChange={(e) => setDecoration(e.target.value)}
+                    className="w-full border rounded-xl p-3 shadow bg-white appearance-none"
+                  >
+                    <option value="">Select Decoration</option>
+                    {decorations.map((dec) => (
+                      <option key={dec} value={dec}>{dec}</option>
+                    ))}
+                  </select>
+                </div>
+              </>
+            )}
+
+               {/* Guests */}
+            <GuestsInput guests={guests} setGuests={setGuests} />
+          </div>
+          
+          {/* RIGHT COLUMN – Notes */}
+         <div className="flex flex-col justify-center items-center w-full">
+    <div className="w-full max-w-2xl">
+      <NotesInput notes={notes} setNotes={setNotes} />
     </div>
+  </div>
+
+        </div>
+
+        <ReserveButton
+          onClick={() =>
+            console.log({
+              selectedOption,
+              date,
+              time,
+              guests,
+              notes,
+              tableCount: selectedOption === "multiple tables" ? tableCount : undefined,
+              eventType: selectedOption === "event" ? eventType : undefined,
+              decoration: selectedOption === "event" ? decoration : undefined,
+            })
+          }
+        />
+      </div>
+    </LocalizationProvider>
   );
 }

@@ -123,7 +123,7 @@ export default function MenuSection() {
             key={index}
             {...dish}
             view={view}
-            onClick={() => openModal(dish)}  // <--- Open modal
+            onClick={() => openModal(dish)} 
           />
         ))}
       </div>

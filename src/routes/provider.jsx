@@ -30,6 +30,20 @@ function RedirectHandler() {
   return null;
 }
 
+// Recursive function to render nested routes
+function renderRoutes(routes) {
+  return routes.map((route) => (
+    <Route
+      key={route.path || Math.random()}
+      path={route.path}
+      element={route.element}
+      index={route.index}
+    >
+      {route.children && renderRoutes(route.children)}
+    </Route>
+  ));
+}
+
 export function AppRouterProvider() {
   const mainRoutes = [
     ...AboutRoutes,
@@ -62,16 +76,10 @@ export function AppRouterProvider() {
         <RedirectHandler />
 
         <Routes>
-           {/* header and footer will be here */}
+          {/* Layout wrapper for header/footer */}
           <Route path="/" element={<LayoutContainer />}>
-
-
-            {mainRoutes.map((route) => (
-              <Route key={route.path} {...route} />
-            ))}
-
+            {renderRoutes(mainRoutes)}
           </Route>
-
         </Routes>
       </BrowserRouter>
     </Suspense>
