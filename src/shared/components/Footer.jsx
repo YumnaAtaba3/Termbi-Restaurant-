@@ -9,8 +9,22 @@ export default function Footer() {
     <footer className="bg-[#272727] text-gray-300 pt-12 pb-6">
       <div className="max-w-7xl mx-auto px-6 grid  md:grid-cols-4 gap-8 ">
         {/* Logo and Intro */}
-       <div className="flex items-center justify-center md:mb-12">
+       <div className="flex flex-col gap-4  items-center md:items-start justify-center md:mb-12">
   <img src={logo} alt="logo" className="h-8 md:h-10 w-auto md:mr-8" />
+  <span>Keep in touch</span>
+   <div className="flex space-x-4 mt-3 md:mt-0">
+      <a href="#">
+        <img src={faceIcon} alt="facebook icon" className="w-5 h-5 opacity-80 hover:opacity-100 transition" />
+      </a>
+      <a href="#">
+        <img src={instaIcon} alt="instagram icon" className="w-5 h-5 opacity-80 hover:opacity-100 transition" />
+      </a>
+      <a href="#">
+        <img src={XIcon} alt="x icon" className="w-5 h-5 opacity-80 hover:opacity-100 transition" />
+      </a>
+    </div>
+    <span>Provided by <img src={logo} alt="logo" className="h-3 inline" /></span>
+    <span>www.termbi.com</span>
 </div>
 
 

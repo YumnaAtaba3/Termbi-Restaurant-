@@ -6,6 +6,8 @@ export const appRoutes = {
   contact:"/contact",
   checkout:"/checkout",
   cart:"/cart",
+  placeOrder: "/place-order",
+  confirmOrder: "/confirm-order",
   manageProfile: "/manage-profile",
   myOrder: "/manage-profile/orders",
   MyBooking: "/manage-profile/bookings",

@@ -15,6 +15,8 @@ import { MyReviewsRoutes } from "../features/my-reviews/routes";
 import { ManageProfileRoutes } from "../features/manage-profile/routes";
 import { CheckoutRoutes } from "../features/checkout/routes"; 
 import { CartRoutes } from "../features/cart/routes";
+import { placeOrderRoutes } from "../features/place-order/routes";
+import { ConfirmRoutes } from "../features/confirm-order/routes";
 
 function RedirectHandler() {
   const navigate = useNavigate();
@@ -57,6 +59,8 @@ export function AppRouterProvider() {
     ...ManageProfileRoutes,
     ...CheckoutRoutes,
     ...CartRoutes,
+   ...placeOrderRoutes,
+   ...ConfirmRoutes,
   ];
 
   return (

@@ -53,9 +53,15 @@ export default function PricingPackages() {
             style={{ minHeight: "28rem", minWidth: "10rem" }}
           >
             {/* Background Circle \*/}
-            <div
-              className="absolute -top-20 -left-5 w-80 h-60 bg-[#FFEDED] rounded-full opacity-100 scale-125 transition-all duration-500 ease-out group-hover:bg-[#F44D4D]"
-            />
+<div
+  className="absolute top-0 left-1/2 -translate-x-1/2 
+             w-[110%] h-[180px] 
+             bg-[#FFEDED] 
+             rounded-b-[40%]
+             rounded-br-[100%]
+             transition-all duration-500 ease-out 
+             group-hover:bg-[#F44D4D]"
+/>
 
             {/* Content */}
             <div className="relative z-10 p-10 flex-1 flex flex-col text-gray-800 transition-colors duration-500">
