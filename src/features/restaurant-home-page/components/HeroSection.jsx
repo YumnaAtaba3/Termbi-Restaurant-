@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "@mui/material";
 import HeroImage from "../../../assets/Component 2.png";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import StarIcon from "@mui/icons-material/Star";
-import LoginModal from "./loginModal";
-import RegisterModal from "./registerModal";
+import LoginModal from "../../log-in/components/loginModal";
+import RegisterModal from "../../register/components/registerModal";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../../routes";
 
 export default function HeroSection() {
-  const [modalType, setModalType] = useState(null); 
 
  const navigate = useNavigate();
-  const closeModal = () => setModalType(null);
+
 
   return (
     <section className="w-full flex flex-col bg-[#FFFCFC] lg:flex-row items-center justify-between mb-20 gap-10 md:gap-0 pl-10">
@@ -72,20 +71,7 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* --- MODALS --- */}
-      {modalType === "login" && (
-        <LoginModal 
-          onClose={closeModal}
-          onSwitch={() => setModalType("register")}
-        />
-      )}
-
-      {modalType === "register" && (
-        <RegisterModal 
-          onClose={closeModal}
-          onSwitch={() => setModalType("login")}
-        />
-      )}
+   
     </section>
   );
 }

@@ -37,3 +37,32 @@ export const registerStepSchemas = [
       .oneOf([Yup.ref("password")], "Passwords do not match"),
   }),
 ];
+
+
+
+// =======================
+// REGISTER VALIDATION
+// =======================
+export const registerModalSchema = Yup.object().shape({
+  fullName: Yup.string()
+    .required("Full name is required")
+    .min(3, "Full name must be at least 3 characters"),
+
+  phone: Yup.string()
+    .required("Phone number is required")
+    .matches(/^[0-9]+$/, "Phone must contain only digits")
+    .min(8, "Phone must be at least 8 digits")
+    .max(15, "Phone cannot exceed 15 digits"),
+
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
+
+  password_confirmation: Yup.string()
+    .required("Please confirm your password")
+    .oneOf([Yup.ref("password"), null], "Passwords do not match"),
+});
