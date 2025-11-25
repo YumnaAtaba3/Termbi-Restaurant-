@@ -21,25 +21,24 @@ interface StepperProps {
   activeStep: number;
 }
 
-// Styled Connector — turns red normally, green when at last step
-const CustomConnector = styled(StepConnector)<{ $isComplete?: boolean }>(
-  ({ theme, $isComplete }) => ({
-    [`&.${stepConnectorClasses.alternativeLabel}`]: { top: 28 },
-    [`& .${stepConnectorClasses.line}`]: {
-      height: 3,
-      border: 0,
-      backgroundColor:
-        theme.palette.mode === "dark" ? theme.palette.grey[800] : "#f3f3f3",
-      borderRadius: 1,
-    },
-    [`&.${stepConnectorClasses.active} .${stepConnectorClasses.line}`]: {
-      backgroundColor: $isComplete ? "#00D091" : "#EC2323",
-    },
-    [`&.${stepConnectorClasses.completed} .${stepConnectorClasses.line}`]: {
-      backgroundColor: $isComplete ? "#00D091" : "#EC2323",
-    },
-  })
-);
+const CustomConnector = styled(StepConnector, {
+  shouldForwardProp: (prop) => prop !== "$isComplete",
+})<{ $isComplete?: boolean }>(({ theme, $isComplete }) => ({
+  [`&.${stepConnectorClasses.alternativeLabel}`]: { top: 28 },
+  [`& .${stepConnectorClasses.line}`]: {
+    height: 3,
+    border: 0,
+    backgroundColor: theme.palette.mode === "dark" ? theme.palette.grey[800] : "#f3f3f3",
+    borderRadius: 1,
+  },
+  [`&.${stepConnectorClasses.active} .${stepConnectorClasses.line}`]: {
+    backgroundColor: $isComplete ? "#00D091" : "#EC2323",
+  },
+  [`&.${stepConnectorClasses.completed} .${stepConnectorClasses.line}`]: {
+    backgroundColor: $isComplete ? "#00D091" : "#EC2323",
+  },
+}));
+
 
 // Custom Step Icon — turns green when finished
 const CustomStepIcon = (props: StepIconProps & { isLastActive: boolean }) => {

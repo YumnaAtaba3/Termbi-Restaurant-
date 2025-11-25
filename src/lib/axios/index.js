@@ -1,0 +1,70 @@
+import axios from "axios";
+import { userStorage } from "../../features/log-in/storage";
+import { handleApiError } from "./axios-error-handler";
+
+export const httpClient = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
+});
+
+// ----------------------
+// REQUEST INTERCEPTOR
+// ----------------------
+httpClient.interceptors.request.use(
+  (config) => {
+    // Only attach token if endpoint is NOT register or login
+    const isAuthRequired =
+      !config.url?.includes("/auth/register") &&
+      !config.url?.includes("/auth/email-login");
+
+    if (isAuthRequired) {
+      const token = userStorage.get();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    }
+
+    console.log("%c[API REQUEST]", "color: blue; font-weight: bold;", {
+      url: config.url,
+      method: config.method,
+      headers: config.headers,
+      data: config.data,
+    });
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// ----------------------
+// RESPONSE INTERCEPTOR
+// ----------------------
+httpClient.interceptors.response.use(
+  (response) => {
+    console.log("%c[API RESPONSE]", "color: green; font-weight: bold;", {
+      url: response.config.url,
+      method: response.config.method,
+      status: response.status,
+      data: response.data,
+    });
+
+    return response;
+  },
+  (error) => {
+    console.error("%c[API ERROR]", "color: red; font-weight: bold;", {
+      url: error?.config?.url,
+      method: error?.config?.method,
+      status: error?.response?.status,
+      response: error?.response?.data,
+    });
+
+    // Auto logout on 401
+    if (error.response?.status === 401) {
+      // logoutHelper();
+    }
+
+    // Handle other errors
+    handleApiError(error);
+
+    return Promise.reject(error);
+  }
+);

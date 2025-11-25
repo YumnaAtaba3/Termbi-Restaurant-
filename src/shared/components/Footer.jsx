@@ -3,6 +3,7 @@ import faceIcon from "../../assets/footer/Face.svg";
 import instaIcon from "../../assets/footer/Insta.svg";
 import XIcon from "../../assets/footer/X.svg";
 import logo from "../../assets/header/logo.svg"
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 export default function Footer() {
 
   return (
@@ -29,7 +30,7 @@ export default function Footer() {
 
 
         {/* Features */}
-        <div>
+        {/* <div>
           <h3 className="text-white font-semibold mb-4 text-[15px]">Features</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="#" className="hover:text-red-400">Get Website</a></li>
@@ -37,7 +38,18 @@ export default function Footer() {
             <li><a href="#" className="hover:text-red-400">Ordering</a></li>
             <li><a href="#" className="hover:text-red-400">Marketing</a></li>
           </ul>
-        </div>
+        </div> */}
+       <div>
+  <h3 className="text-white font-semibold mb-4 text-[15px]">Opening Hours</h3>
+  <ul className="space-y-2 text-md">
+    <li><ArrowRightAltIcon /> 08 AM TO 12 AM</li>
+    <li>MONDAY TO FRIDAY</li>
+    <li><ArrowRightAltIcon /> 11 AM TO 10 PM</li>
+    <li>Sunday: Closed</li>
+  </ul>
+</div>
+
+
 
         {/* Quick Links */}
         <div>

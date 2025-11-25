@@ -3,9 +3,9 @@ import { appRoutes } from "../../../routes/index";
 
 const ManageProfileLayout = lazy(() => import("../pages/ManageProfileLayout"));
 const ProfileMain = lazy(() => import("../pages/ProfileMain"));
-const Orders = lazy(() => import("../pages/Orders"));
-const Bookings = lazy(() => import("../pages/Bookings"));
-const Reviews = lazy(() => import("../pages/Reviews"));
+const Orders = lazy(() => import("../../my-order/pages/index"));
+const Bookings = lazy(() => import("../../my-booking/pages/index"));
+const Reviews = lazy(() => import("../../my-reviews/pages/index"));
 
 export const ManageProfileRoutes = [
   {

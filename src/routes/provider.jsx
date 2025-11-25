@@ -7,7 +7,7 @@ import LayoutContainer from "../shared/layouts/container-layout";
 import { AboutRoutes } from "../features/About-us/routes";
 import { ContactRoutes } from "../features/contact/routes";
 import { LoginRoutes } from "../features/log-in/routes";
-import { RegisterRoutes } from "../features/regester/routes";
+import { RegisterRoutes } from "../features/register/routes";
 import { restaurantHomeRoutes } from "../features/restaurant-home-page/routes";
 import { ReserveDetailsRoutes } from "../features/Reserve-details/routes";
 import { MyOrderRoutes } from "../features/my-order/routes";

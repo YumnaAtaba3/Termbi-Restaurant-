@@ -6,7 +6,8 @@ import mastercardLogo from "../../../assets/payment/masterCard.svg";
 import paypalLogo from "../../../assets/payment/paypal.svg";
 import gpayLogo from "../../../assets/payment/G pay.svg";
 import payoneerLogo from "../../../assets/payment/payoneer.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { appRoutes } from "../../../routes";
 
 
 const initialCart = [
@@ -41,7 +42,7 @@ const initialCart = [
 
 function Cart() {
   const [cartItems, setCartItems] = useState(initialCart);
-
+  const navigate = useNavigate ()
   const handleQuantity = (id, type) => {
     setCartItems(
       cartItems.map((item) =>
@@ -154,7 +155,9 @@ function Cart() {
               <span>Grand Total</span>
               <span className="font-bold text-red-500 md:mb-7">${grandTotal}</span>
             </div>
-            <button className="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600">
+            <button onClick={()=>{
+              navigate(appRoutes.checkout)
+            }} className="w-full bg-red-500 text-white py-2 rounded-lg font-semibold hover:bg-red-600">
               Checkout
             </button>
           </div>
