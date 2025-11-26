@@ -39,9 +39,9 @@ return (
       {/* RESPONSIVE GRID */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
-        {/* IMAGE (mobile smaller) */}
+        {/* IMAGE  */}
         <img
-          src={dish.image}
+          src={dish.image||"https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=60"}
           alt={dish.title}
           className="
             w-full 

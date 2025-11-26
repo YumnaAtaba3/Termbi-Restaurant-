@@ -5,7 +5,7 @@ import LanguageSelector from "./LanguageSelector";
 import { useIsLoggedIn } from "../../../../features/log-in/hooks/is-logged-in";
 import { logoutHelper } from "../../../../features/log-in/utlitlies";
 import { appRoutes } from "../../../../routes";
-import { Search, ShoppingCart } from "@mui/icons-material";
+
 
 export default function MobileMenu({ closeMenu }) {
   const { isLoggedIn } = useIsLoggedIn();

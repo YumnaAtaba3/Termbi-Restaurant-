@@ -3,8 +3,6 @@ import { Button } from "@mui/material";
 import HeroImage from "../../../assets/Component 2.png";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import StarIcon from "@mui/icons-material/Star";
-import LoginModal from "../../log-in/components/loginModal";
-import RegisterModal from "../../register/components/registerModal";
 import { useNavigate } from "react-router-dom";
 import { appRoutes } from "../../../routes";
 
@@ -53,7 +51,6 @@ export default function HeroSection() {
             color="error"
             className="mt-6 px-6 py-3 rounded-xl shadow-md w-[220px]"
             sx={{ textTransform: "none" }}
-            // onClick={() => setModalType("login")}
           onClick={() => navigate(appRoutes.reserveDetails)}
 
           >

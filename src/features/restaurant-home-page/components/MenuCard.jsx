@@ -50,9 +50,14 @@ export default function MenuCard({ title, description, price, image, view, onCli
           </div>
         </div>
 
-        <div className="sm:w-1/2 w-full h-48 sm:h-auto">
-          <img src={image} alt={title} className="w-full h-full object-cover" />
-        </div>
+       <div className="sm:w-1/2 w-full h-48 sm:h-48 my-5 mr-3">
+  <img
+    src={image}
+    alt={title}
+    className="w-full h-full object-cover object-center"
+  />
+</div>
+
       </div>
     </Card>
   );

@@ -14,7 +14,7 @@ httpClient.interceptors.request.use(
     // Only attach token if endpoint is NOT register or login
     const isAuthRequired =
       !config.url?.includes("/auth/register") &&
-      !config.url?.includes("/auth/email-login");
+      !config.url?.includes("/auth/login");
 
     if (isAuthRequired) {
       const token = userStorage.get();
