@@ -136,7 +136,7 @@ const LoginForm = () => {
           <p className="text-center text-sm text-gray-600 mt-3">
             New in Termbi?{" "}
             <a
-              href="/register"
+              href={appRoutes.auth.signUp}
               className="text-red-600 ml-2 font-medium hover:underline"
             >
               Register
