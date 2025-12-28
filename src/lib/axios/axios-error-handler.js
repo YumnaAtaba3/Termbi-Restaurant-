@@ -4,6 +4,11 @@ export function handleApiError(error) {
     throw new Error("Network error — please check your connection.");
   }
 
+  // If API returned a message, use it
+  if (error.response.data?.message) {
+    throw new Error(error.response.data.message);
+  }
+
   const status = error.response.status;
 
   switch (status) {

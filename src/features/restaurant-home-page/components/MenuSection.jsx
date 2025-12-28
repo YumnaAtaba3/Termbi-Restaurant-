@@ -124,13 +124,13 @@ export default function MenuSection() {
           ) : sortedDishes.length === 0 ? (
             <div className="py-16">No dishes available.</div>
           ) : (
-            <div
-              className={`mx-4 px-4 ${
-                view === "cards"
-                  ? "grid grid-cols-1 md:grid-cols-2 gap-16"
-                  : "flex flex-col gap-10"
-              }`}
-            >
+           <div
+  className={`px-4 sm:px-6 lg:px-10 ${
+    view === "cards"
+      ? "grid grid-cols-1 md:grid-cols-2 gap-16 justify-items-center"
+      : "flex flex-col gap-10"
+  }`}
+>
               {sortedDishes.map((dish) => (
                 <MenuCard
                   key={dish.id}
