@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "@mui/material";
+import mockimage from "../../../assets/about/good-test.svg"
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 export default function MenuCard({ title, description, price, image, view, onClick }) {
@@ -52,7 +53,7 @@ export default function MenuCard({ title, description, price, image, view, onCli
 
        <div className="sm:w-1/2 w-full h-40 sm:h-48 my-5 mr-3">
   <img
-    src={image}
+    src={image||mockimage}
     alt={title}
     className="w-full h-full object-cover object-center"
   />
